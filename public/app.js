@@ -1,3 +1,24 @@
+async function clearHistory() {
+  const ok = confirm('Tem certeza que deseja limpar todo o histórico?');
+  if (!ok) return;
+  const res = await fetch('/api/history', { method: 'DELETE' });
+  if (!res.ok) throw new Error('Falha ao limpar histórico');
+  await refresh();
+}
+
+// no topo, após selecionar elementos:
+const clearBtn = document.getElementById('clear');
+
+// depois dos outros listeners:
+clearBtn.addEventListener('click', async () => {
+  try {
+    await clearHistory();
+  } catch (e) {
+    alert(String(e));
+  }
+});
+
+
 async function analyze(url) {
   const res = await fetch('/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) });
   if (!res.ok) throw new Error('Falha na análise');

@@ -167,3 +167,12 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.listen(CONFIG.PORT, () => {
   console.log(`Servidor rodando em http://localhost:${CONFIG.PORT}`);
 });
+
+app.delete('/api/history', (_req, res) => {
+  try {
+    fs.writeFileSync(HISTORY_PATH, '[]', 'utf-8');
+    return res.json({ ok: true });
+  } catch (e: any) {
+    return res.status(500).json({ error: e?.message || 'Falha ao limpar histórico' });
+  }
+});

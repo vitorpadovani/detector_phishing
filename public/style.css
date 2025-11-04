@@ -42,3 +42,12 @@ button:hover { filter: brightness(1.1); }
     outline: none;
     border-color: #2962ff;
   }
+
+button.danger { background: #c62828; }
+
+button.danger:hover { filter: brightness(1.1); }
+
+button.danger {
+    padding: 2px 4px;
+    font-size: 14px;
+}
