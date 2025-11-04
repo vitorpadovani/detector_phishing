@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detector de Phishing (TS)</title>
+  <link href="/style.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1> Detector de Phishing </h1>
+    <p class="muted">Cole uma URL para análise. O resultado mostrará os sinais encontrados, score e veredito.</p>
+
+    <form id="form">
+      <input id="url" type="url" placeholder="https://exemplo.com" required />
+      <button type="submit">Analisar</button>
+    </form>
+
+    <div id="result" class="card hidden"></div>
+
+    <hr />
+    <h2>Histórico</h2>
+    <div class="actions">
+      <input id="filter" placeholder="filtrar por domínio/URL" />
+      <button id="refresh" class="button-secondary">Atualizar</button>
+    </div>
+    <table id="history">
+      <thead>
+        <tr><th>Data</th><th>URL Final</th><th>Domínio</th><th>Score</th><th>Veredito</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Distribuição de Risco</h3>
+    <canvas id="chart" height="160"></canvas>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
